@@ -9,7 +9,12 @@ if (process.env.NODE_ENV != "production") {
 const app = express();
 connect();
 
-app.use(cors())
+app.use(cors(
+  {
+    origin:'https://note-taking-frontend.vercel.app',
+    methods:["GET","PUT","POST","DELETE"]
+  }
+))
 app.use(express.json());
 
 app.get("/", (req, res) => {
